@@ -2,13 +2,20 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>Allors.Documents</RootNamespace>
-    <PackageProjectUrl>https://github.com/Allors/Documents</PackageProjectUrl>
+    <Title>Allors Documents</Title>
+    <Authors>allors</Authors>
+    <Company>Allors bvba</Company>
+    <Copyright>(c) Allors bvba</Copyright>
     <Description>Generate office documents using embedded templates tags.</Description>
-    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <PackageProjectUrl>https://github.com/Allors/Documents</PackageProjectUrl>
+    <PackageDescription>Embed template tags inside open office documents.</PackageDescription>
+    <PackageIcon>https://raw.githubusercontent.com/Allors/Documents/master/package_icon.png</PackageIcon>
+    <PackageLicenseExpression>LGPL-3.0-or-later</PackageLicenseExpression>
+    <PackageLicenseExpression>LGPL-3.0-or-later</PackageLicenseExpression>
+    <PackageTags>office;word;libreoffice;openoffice;odt;doc;docx;pdf;generation;generator;template</PackageTags>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-    <PackageLicenseExpression>LGPL-3.0-or-later</PackageLicenseExpression>
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <ItemGroup>
