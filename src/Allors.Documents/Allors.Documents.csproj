@@ -1,7 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <RootNamespace>Allors.Documents</RootNamespace>
     <Title>Allors Documents</Title>
     <Authors>allors</Authors>
     <Company>Allors bvba</Company>
@@ -9,15 +8,21 @@
     <Description>Generate office documents using embedded templates tags.</Description>
     <PackageProjectUrl>https://github.com/Allors/Documents</PackageProjectUrl>
     <PackageDescription>Embed template tags inside open office documents.</PackageDescription>
-    <PackageIcon>https://raw.githubusercontent.com/Allors/Documents/master/package_icon.png</PackageIcon>
+    <PackageIcon>icon.png</PackageIcon>
     <PackageLicenseExpression>LGPL-3.0-or-later</PackageLicenseExpression>
     <PackageLicenseExpression>LGPL-3.0-or-later</PackageLicenseExpression>
     <PackageTags>office;word;libreoffice;openoffice;odt;doc;docx;pdf;generation;generator;template</PackageTags>
+    <RepositoryUrl>https://github.com/Allors/Documents.git</RepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="icon.png" Pack="true" PackagePath="" />
+  </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0">
       <PrivateAssets>all</PrivateAssets>
