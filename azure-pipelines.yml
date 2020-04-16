@@ -81,8 +81,7 @@ jobs:
 
 trigger:
 - master
-- develop
-- release/*
+- feature/*
 
 variables:
   buildConfiguration: 'Release'
