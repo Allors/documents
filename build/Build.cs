@@ -85,8 +85,8 @@ class Build : NukeBuild
             DotNetPack(s => s
                 .SetProject(Solution.GetProject("Allors.Documents"))
                 .SetConfiguration(Configuration)
-                .SetIncludeSource(true)
-                .SetIncludeSymbols(true)
+                .EnableIncludeSource()
+                .EnableIncludeSymbols()
                 .SetVersion(GitVersion.NuGetVersionV2)
                 .SetOutputDirectory(ArtifactsDirectory / "nuget"));
         });
