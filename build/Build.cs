@@ -15,7 +15,7 @@ using static Nuke.Common.Tools.DotNet.DotNetTasks;
 [UnsetVisualStudioEnvironmentVariables]
 class Build : NukeBuild
 {
-    public static int Main () => Execute<Build>(x => x.Ci);
+    public static int Main() => Execute<Build>(x => x.Ci);
 
     [Parameter("Configuration to build - Default is 'Debug' (local) or 'Release' (server)")]
     readonly Configuration Configuration = IsLocalBuild ? Configuration.Debug : Configuration.Release;
@@ -85,8 +85,8 @@ class Build : NukeBuild
             DotNetPack(s => s
                 .SetProject(Solution.GetProject("Allors.Documents"))
                 .SetConfiguration(Configuration)
-                .EnableNoBuild()
-                .EnableNoRestore()
+                .SetIncludeSource(true)
+                .SetIncludeSymbols(true)
                 .SetVersion(GitVersion.NuGetVersionV2)
                 .SetOutputDirectory(ArtifactsDirectory / "nuget"));
         });
