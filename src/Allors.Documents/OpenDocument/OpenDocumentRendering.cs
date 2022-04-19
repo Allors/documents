@@ -124,7 +124,15 @@ namespace Allors.Document.OpenDocument
 
             foreach (var kvp in this.model)
             {
-                contentTemplate.Add(kvp.Key, kvp.Value);
+                var argName = kvp.Key;
+                var argValue = kvp.Value;
+
+                if (contentTemplate.impl.HasFormalArgs && !contentTemplate.impl.FormalArguments.Any(v => argName.Equals(v.Name)))
+                {
+                    continue;
+                }
+
+                contentTemplate.Add(argName, argValue);
             }
 
             var contentGenerated = contentTemplate.Render();
