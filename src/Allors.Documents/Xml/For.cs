@@ -11,27 +11,27 @@ namespace Allors.Document.Xml
 
     public class For : Statement
     {
-        public static readonly HashSet<string> ReservedNames = new HashSet<string>
-                                                                   {
-                                                                       "default",
-                                                                       "first",
-                                                                       "group",
-                                                                       "if",
-                                                                       "implements",
-                                                                       "interface",
-                                                                       "last",
-                                                                       "length",
-                                                                       "optional",
-                                                                       "rest",
-                                                                       "strip",
-                                                                       "super",
-                                                                       "trunc",
-                                                                       "else",
-                                                                       "endif",
-                                                                       "elseif",
-                                                                       "i", // 1 based index argument
-                                                                       "i0", // 0 based index argument
-                                                                   };
+        public static readonly HashSet<string> ReservedNames =
+        [
+            "default",
+            "first",
+            "group",
+            "if",
+            "implements",
+            "interface",
+            "last",
+            "length",
+            "optional",
+            "rest",
+            "strip",
+            "super",
+            "trunc",
+            "else",
+            "endif",
+            "elseif",
+            "i", // 1 based index argument
+            "i0" // 0 based index argument
+        ];
 
         private static readonly Regex Regex = new Regex(@"(\w+)(.*)", RegexOptions.IgnoreCase);
 

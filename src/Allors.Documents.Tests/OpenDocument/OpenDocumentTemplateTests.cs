@@ -22,17 +22,17 @@ namespace Allos.Document.OpenDocument.Tests
             var model = new Model
             {
                 Person = new ModelPerson { FirstName = "Jane" },
-                People = new[]
-                         {
-                             new ModelPerson { FirstName = "John" },
-                             new ModelPerson { FirstName = "Jenny" },
-                         },
-                Images = new[]
-                             {
-                                 "number1",
+                People =
+                [
+                    new ModelPerson { FirstName = "John" },
+                             new ModelPerson { FirstName = "Jenny" }
+                ],
+                Images =
+                [
+                    "number1",
                                  "number2",
-                                 "number3",
-                             },
+                                 "number3"
+                ],
             };
 
             var document = this.GetResource("EmbeddedTemplate.odt");
@@ -61,17 +61,17 @@ namespace Allos.Document.OpenDocument.Tests
             var model = new Model
             {
                 Person = new ModelPerson { FirstName = "Jane" },
-                People = new[]
-                                             {
-                                                 new ModelPerson { FirstName = "John" },
-                                                 new ModelPerson { FirstName = "Jenny" },
-                                             },
-                Images = new[]
-                             {
-                                 "number1",
+                People =
+                [
+                    new ModelPerson { FirstName = "John" },
+                                                 new ModelPerson { FirstName = "Jenny" }
+                ],
+                Images =
+                [
+                    "number1",
                                  "number2",
-                                 "number3",
-                             },
+                                 "number3"
+                ],
             };
 
             var document = this.GetResource("EmbeddedTemplate.odt");
@@ -117,11 +117,9 @@ namespace Allos.Document.OpenDocument.Tests
             var resourceName = assembly.GetManifestResourceNames().First(v => v.Contains(name));
             var resource = assembly.GetManifestResourceStream(resourceName);
 
-            using (var output = new MemoryStream())
-            {
-                resource?.CopyTo(output);
-                return output.ToArray();
-            }
+            using var output = new MemoryStream();
+            resource?.CopyTo(output);
+            return output.ToArray();
         }
     }
 }

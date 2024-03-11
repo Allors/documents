@@ -15,13 +15,15 @@ namespace Allos.Document.Xml.Tests
         [Fact]
         public void RewriteSiblingParents()
         {
-            var xml = @"
-<root>
-  <parent1/>
-  <parent2/>
-  <parent3/>
-</root>
-";
+            const string xml = """
+
+                               <root>
+                                 <parent1/>
+                                 <parent2/>
+                                 <parent3/>
+                               </root>
+
+                               """;
 
             var document = new XmlDocument();
             document.LoadXml(xml);
@@ -35,12 +37,14 @@ namespace Allos.Document.Xml.Tests
 
             rootPair.Rewrite(v => v.Document.CreateElement("allors"));
 
-            var expected = @"
-<root>
-  <allors>
-    <parent2/>
-  </allors>
-</root>";
+            const string expected = """
+
+                                    <root>
+                                      <allors>
+                                        <parent2/>
+                                      </allors>
+                                    </root>
+                                    """;
 
             var diff = DiffBuilder.Compare(Input.FromDocument(document)).WithTest(Input.FromString(expected)).Build();
 
@@ -50,15 +54,17 @@ namespace Allos.Document.Xml.Tests
         [Fact]
         public void RewriteNestedSiblingParents()
         {
-            var xml = @"
-<root>
-  <parent1/>
-  <parent2/>
-  <parent3/>
-  <parent4/>
-  <parent5/>
-</root>
-";
+            const string xml = """
+
+                               <root>
+                                 <parent1/>
+                                 <parent2/>
+                                 <parent3/>
+                                 <parent4/>
+                                 <parent5/>
+                               </root>
+
+                               """;
 
             var document = new XmlDocument();
             document.LoadXml(xml);
@@ -77,14 +83,16 @@ namespace Allos.Document.Xml.Tests
 
             rootPair.Rewrite(v => v.Document.CreateElement("allors"));
 
-            var expected = @"
-<root>
-  <allors>
-    <allors>
-       <parent3/>
-    </allors>
-  </allors>
-</root>";
+            const string expected = """
+
+                                    <root>
+                                      <allors>
+                                        <allors>
+                                           <parent3/>
+                                        </allors>
+                                      </allors>
+                                    </root>
+                                    """;
 
             var diff = DiffBuilder.Compare(Input.FromDocument(document)).WithTest(Input.FromString(expected)).Build();
             Assert.False(diff.HasDifferences(), diff.ToString());

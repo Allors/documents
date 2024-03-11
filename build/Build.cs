@@ -1,18 +1,12 @@
+using System.Threading;
 using Nuke.Common;
-using Nuke.Common.Execution;
-using Nuke.Common.Git;
 using Nuke.Common.IO;
 using Nuke.Common.ProjectModel;
-using Nuke.Common.Tooling;
 using Nuke.Common.Tools.DotNet;
 using Nuke.Common.Tools.GitVersion;
 using Nuke.Common.Utilities.Collections;
 using static Nuke.Common.IO.FileSystemTasks;
-using static Nuke.Common.IO.PathConstruction;
 using static Nuke.Common.Tools.DotNet.DotNetTasks;
-
-[CheckBuildProjectConfigurations]
-[UnsetVisualStudioEnvironmentVariables]
 class Build : NukeBuild
 {
     public static int Main() => Execute<Build>(x => x.Ci);
@@ -20,12 +14,7 @@ class Build : NukeBuild
     [Parameter("Configuration to build - Default is 'Debug' (local) or 'Release' (server)")]
     readonly Configuration Configuration = IsLocalBuild ? Configuration.Debug : Configuration.Release;
 
-    [Parameter("Collect code coverage. Default is 'true'")] readonly bool? Cover = true;
-
-    [Parameter("Coverage threshold. Default is 80%")] readonly int Threshold = 80;
-
     [Solution("src/Documents.sln")] readonly Solution Solution;
-    [GitRepository] readonly GitRepository GitRepository;
     [GitVersion] readonly GitVersion GitVersion;
 
     AbsolutePath SourceDirectory => RootDirectory / "src";
@@ -35,8 +24,8 @@ class Build : NukeBuild
         .Before(Restore)
         .Executes(() =>
         {
-            SourceDirectory.GlobDirectories("**/bin", "**/obj").ForEach(DeleteDirectory);
-            EnsureCleanDirectory(ArtifactsDirectory);
+            DotNetClean(v=>v.SetProject(SourceDirectory));
+            ArtifactsDirectory.CreateOrCleanDirectory();
         });
 
     Target Restore => _ => _
@@ -68,13 +57,7 @@ class Build : NukeBuild
                 .SetConfiguration(Configuration)
                 .EnableNoBuild()
                 .EnableNoRestore()
-                .SetLogger("trx")
-                .SetLogOutput(true)
-                .SetArgumentConfigurator(arguments => arguments.Add("/p:CollectCoverage={0}", Cover)
-                    .Add("/p:CoverletOutput={0}/", ArtifactsDirectory / "coverage")
-                    .Add("/p:Threshold={0}", Threshold)
-                    .Add("/p:UseSourceLink={0}", "true")
-                    .Add("/p:CoverletOutputFormat={0}", "cobertura"))
+                .AddLoggers("trx;LogFileName=AllorsDocumentsTests.trx")
                 .SetResultsDirectory(ArtifactsDirectory / "tests"));
         });
 
