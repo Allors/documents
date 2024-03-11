@@ -10,6 +10,8 @@ jobs:
   pool:
     vmImage: 'macOS-latest'
   steps:
+    - checkout: self
+      fetchDepth: 0
     - task: UseDotNet@2
       inputs:
         packageType: sdk
@@ -34,6 +36,8 @@ jobs:
   pool:
     vmImage: 'ubuntu-latest'
   steps:
+    - checkout: self
+      fetchDepth: 0
     - task: UseDotNet@2
       inputs:
         packageType: sdk
