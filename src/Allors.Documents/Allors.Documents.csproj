@@ -1,34 +1,35 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <Title>Allors Documents</Title>
-    <Authors>allors</Authors>
-    <Company>Allors bvba</Company>
-    <Copyright>(c) Allors bvba</Copyright>
-    <Description>Generate office documents using embedded templates tags.</Description>
-    <PackageProjectUrl>https://github.com/Allors/Documents</PackageProjectUrl>
-    <PackageDescription>Embed template tags inside open office documents.</PackageDescription>
-    <PackageIcon>icon.png</PackageIcon>
-    <PackageLicenseExpression>LGPL-3.0-or-later</PackageLicenseExpression>
-    <PackageLicenseExpression>LGPL-3.0-or-later</PackageLicenseExpression>
-    <PackageTags>office;word;libreoffice;openoffice;odt;doc;docx;pdf;generation;generator;template</PackageTags>
-    <RepositoryUrl>https://github.com/Allors/Documents.git</RepositoryUrl>
-    <EmbedUntrackedSources>true</EmbedUntrackedSources>
-    <IncludeSymbols>true</IncludeSymbols>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-    <LangVersion>latest</LangVersion>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<Title>Allors Documents</Title>
+		<Authors>allors</Authors>
+		<Company>Allors bvba</Company>
+		<Copyright>(c) Allors bvba</Copyright>
+		<Description>Generate office documents using embedded templates tags.</Description>
+		<PackageProjectUrl>https://github.com/Allors/Documents</PackageProjectUrl>
+		<PackageDescription>Embed template tags inside open office documents.</PackageDescription>
+		<PackageIcon>icon.png</PackageIcon>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageLicenseExpression>LGPL-3.0-or-later</PackageLicenseExpression>
+		<PackageLicenseExpression>LGPL-3.0-or-later</PackageLicenseExpression>
+		<PackageTags>office;word;libreoffice;openoffice;odt;doc;docx;pdf;generation;generator;template</PackageTags>
+		<RepositoryUrl>https://github.com/Allors/Documents.git</RepositoryUrl>
+		<EmbedUntrackedSources>true</EmbedUntrackedSources>
+		<IncludeSymbols>true</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+		<LangVersion>latest</LangVersion>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <None Include="icon.png" Pack="true" PackagePath="" />
-    <None Include="..\..\README.md" Pack="true" PackagePath="\"/>
-  </ItemGroup>
+	<ItemGroup>
+		<None Include="icon.png" Pack="true" PackagePath="" />
+		<None Include="..\..\README.md" Pack="true" PackagePath="\"/>
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="StringTemplate4" Version="4.0.8" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="StringTemplate4" Version="4.0.8" />
+	</ItemGroup>
 </Project>
